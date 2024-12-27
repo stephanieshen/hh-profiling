@@ -1,0 +1,16 @@
+<div class="hhp-map">
+    <mgl-map
+        [style]="'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL'"
+        [zoom]="[18]"
+        [center]="[120.3352, 16.4383]"
+        (mapClick)="mapClick($event)"
+    >
+        <ng-container *ngFor="let marker of (markers$ | async)">
+            <mgl-marker [lngLat]="[marker.longitude, marker.latitude]">
+                <div class="hhp-marker">
+                    <!-- <i class="pi pi-map-marker"></i> -->
+                </div>
+            </mgl-marker>
+        </ng-container>
+    </mgl-map>
+</div>
