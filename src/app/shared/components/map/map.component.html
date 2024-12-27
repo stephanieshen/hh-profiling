@@ -4,10 +4,11 @@
         [zoom]="[18]"
         [center]="[120.3352, 16.4383]"
         (mapClick)="mapClick($event)"
+        data-testid="map"
     >
         <ng-container *ngFor="let marker of (markers$ | async)">
             <mgl-marker [lngLat]="[marker.longitude, marker.latitude]">
-                <div class="hhp-marker">
+                <div class="hhp-marker" data-testid="marker">
                     <!-- <i class="pi pi-map-marker"></i> -->
                 </div>
             </mgl-marker>

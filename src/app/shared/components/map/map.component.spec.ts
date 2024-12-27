@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// @ts-ignore
 
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MapComponent } from './map.component';
+import { By } from '@angular/platform-browser';
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -19,5 +21,13 @@ describe('MapComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show the map', () => {
+    const map = fixture.debugElement.query(By.css('[data-testid="map"]'));
+
+    fixture.detectChanges();
+
+    expect(map).toBeTruthy();
   });
 });
