@@ -1,0 +1,42 @@
+<div *ngIf="profilingForm" [formGroup]="profilingForm">
+    <h4>Step 1 out of 4: Household Information</h4>
+    <div formGroupName="householdInfo">
+        <div class="formgrid grid">
+            <div class="field col">
+                <p-floatlabel variant="in">
+                    <input pInputText type="text" id="sitio" class="w-full" formControlName="sitio" />
+                    <label for="sitio">Sitio/Purok</label>
+                </p-floatlabel>
+            </div>
+            <div class="field col">
+                <p-floatlabel variant="in">
+                    <input pInputText type="text" id="barangay" class="w-full" formControlName="barangay" />
+                    <label for="barangay">Barangay</label>
+                </p-floatlabel>
+            </div>
+        </div>
+        <div class="formgrid grid"> 
+            <div class="field col">
+                <p-floatlabel variant="in">
+                    <input pInputText type="text" id="city" class="w-full" formControlName="city" />
+                    <label for="city">City/Municipality</label>
+                </p-floatlabel>
+            </div>
+            <div class="field col">
+                <p-floatlabel variant="in">
+                    <input pInputText type="text" id="province" class="w-full" formControlName="province" />
+                    <label for="province">Province</label>
+                </p-floatlabel>
+            </div>
+        </div>
+        <div class="formgrid grid">
+            <div class="field col">
+                <p-floatlabel variant="in">
+                    <input pInputText type="text" id="householdNumber" class="w-full" formControlName="householdNumber" />
+                    <label for="householdNumber">Household Number</label>
+                </p-floatlabel>
+            </div>
+        </div>
+    </div>
+</div>
+

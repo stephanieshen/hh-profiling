@@ -1,0 +1,19 @@
+<div class="profiling-dialog">
+    <p-steps
+        [model]="stepItems"
+        [readonly]="false"
+        [activeIndex]="activeIndex"
+        (activeIndexChange)="onActiveIndexChange($event)"
+    />
+
+    <div class="m-6">
+
+        <form [formGroup]="profilingForm">
+            @if (activeIndex === 0) {
+                <app-household-info-form [profilingForm]="profilingForm"></app-household-info-form>
+            }
+        
+        </form>
+    </div>
+</div>
+
