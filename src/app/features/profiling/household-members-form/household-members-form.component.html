@@ -1,7 +1,7 @@
 <div *ngIf="profilingForm" [formGroup]="profilingForm">
     <h4>Step 3 out of 4: Household Members</h4>
     <div formArrayName="householdMembers">
-        <p-tabs value="1">
+        <p-tabs [value]="selectedTabIndex">
             <p-tablist>
                 @for (member of householdMembersForm.controls; track member; let index = $index) {
                     <p-tab [value]="index">Member {{ index + 1 }}</p-tab>

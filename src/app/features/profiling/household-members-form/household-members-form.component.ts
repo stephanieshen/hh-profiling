@@ -18,6 +18,7 @@ export class HouseholdMembersFormComponent {
   philHealthMembershipOptions = MEMBER_TYPE;
   philHealthCategoryOptions = PHILHEALTH_CATEGORY;
   releationshipToHouseholdHeadOptions = RELATIONSHIP_TO_HEAD_OF_HOUSEHOLD;
+  selectedTabIndex: number = 0;
 
   get householdMembersForm(): FormArray {
     return this.profilingForm.get('householdMembers') as FormArray;
