@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { SOCIOECONOMIC_STATUS, TYPE_OF_TOILET_FACILITY, TYPE_OF_WATER_SOURCE } from '../../../core/constants/dropdown-options.constants';
 
 @Component({
   selector: 'app-socio-and-env-form',
@@ -9,4 +11,9 @@ import { Component } from '@angular/core';
 })
 export class SocioAndEnvFormComponent {
 
+  @Input() profilingForm!: FormGroup;
+
+  socioEconomicStatusOptions = SOCIOECONOMIC_STATUS;
+  typeOfToiletFacilityOptions = TYPE_OF_TOILET_FACILITY;
+  typeOfWaterSourceOptions = TYPE_OF_WATER_SOURCE;
 }

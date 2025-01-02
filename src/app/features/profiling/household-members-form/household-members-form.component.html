@@ -1,1 +1,95 @@
-<p>household-members-form works!</p>
+<div *ngIf="profilingForm" [formGroup]="profilingForm">
+    <h4>Step 3 out of 4: Household Members</h4>
+    <div formArrayName="householdMembers">
+        <p-tabs value="1">
+            <p-tablist>
+                @for (member of householdMembersForm.controls; track member; let index = $index) {
+                    <p-tab [value]="index">Member {{ index + 1 }}</p-tab>
+                }
+            </p-tablist>
+            <p-tabpanels class="px-0 mt-4">
+                @for (member of householdMembersForm.controls; track member; let index = $index) {
+                    <p-tabpanel [value]="index">
+                        <div [formGroupName]="index">
+                            <div class="formgrid grid">
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <input pInputText type="text" id="lastname" class="w-full" formControlName="lastname" />
+                                        <label for="lastname">Lastname</label>
+                                    </p-floatlabel>
+                                </div>
+                            </div>
+                            <div class="formgrid grid">
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <input pInputText type="text" id="firstname" class="w-full" formControlName="firstname" />
+                                        <label for="firstname">Firstname</label>
+                                    </p-floatlabel>
+                                </div>
+                            </div>
+                            <div class="formgrid grid">
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <input pInputText type="text" id="middlename" class="w-full" formControlName="middlename" />
+                                        <label for="middlename">Middlename</label>
+                                    </p-floatlabel>
+                                </div>
+                            </div>
+                            <div class="formgrid grid">
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <p-select inputId="relationshipToHouseholdHead" [options]="releationshipToHouseholdHeadOptions" optionLabel="title" class="w-full" formControlName="relationshipToHouseholdHead" />
+                                        <label for="relationshipToHouseholdHead">Relationship to Household Head</label>
+                                    </p-floatlabel>
+                                </div>
+                            </div>
+                            <div class="formgrid grid">
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <p-select inputId="relationshipToHouseholdHead" [options]="genderOptions" optionLabel="title" class="w-full" formControlName="relationshipToHouseholdHead" />
+                                        <label for="relationshipToHouseholdHead">Gender</label>
+                                    </p-floatlabel>
+                                </div>
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <p-datepicker inputId="dateOfBirth" showIcon iconDisplay="input" class="w-full" formControlName="dateOfBirth" />
+                                        <label for="dateOfBirth">Date of Birth</label>
+                                    </p-floatlabel>
+                                </div>
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <p-select inputId="civilStatus" [options]="civilStatusOptions" optionLabel="title" class="w-full" formControlName="civilStatus" />
+                                        <label for="civilStatus">Civil Status</label>
+                                    </p-floatlabel>
+                                </div>
+                            </div>
+
+                            <div class="formgrid grid">
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <input pInputText type="text" id="philHealthIDNumber" class="w-full" formControlName="philHealthIDNumber" />
+                                        <label for="philHealthIDNumber">PhilHealth ID Number</label>
+                                    </p-floatlabel>
+                                </div>
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <p-select inputId="philHealthMembershipType" [options]="philHealthMembershipOptions" optionLabel="title" class="w-full" formControlName="philHealthMembershipType" />
+                                        <label for="philHealthMembershipType">Member Type</label>
+                                    </p-floatlabel>
+                                </div>
+                                <div class="field col">
+                                    <p-floatlabel variant="in">
+                                        <p-select inputId="philHealthCategory" [options]="philHealthCategoryOptions" optionLabel="title" class="w-full" formControlName="philHealthCategory" />
+                                        <label for="philHealthCategory">PhilHealth Category</label>
+                                    </p-floatlabel>
+                                </div>
+                            </div>
+                        </div>
+                    </p-tabpanel>
+                }
+            </p-tabpanels>
+        </p-tabs>
+        
+       
+    </div>
+</div>

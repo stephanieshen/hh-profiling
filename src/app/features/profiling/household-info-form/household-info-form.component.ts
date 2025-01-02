@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ETHNICITY, RELATIONSHIP_TO_HEAD_OF_HOUSEHOLD } from '../../../core/constants/dropdown-options.constants';
 
 @Component({
   selector: 'app-household-info-form',
@@ -11,4 +12,7 @@ import { FormGroup } from '@angular/forms';
 export class HouseholdInfoFormComponent {
 
   @Input() profilingForm!: FormGroup;
+
+  ethnicityOptions = ETHNICITY;
+  releationshipToHouseholdHeadOptions = RELATIONSHIP_TO_HEAD_OF_HOUSEHOLD;
 }

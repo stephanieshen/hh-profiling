@@ -44,15 +44,29 @@ export class ProfilingComponent implements OnInit {
         lastname: ['', Validators.required],
         firstname: ['', Validators.required],
         middlename: ['', Validators.required],
-        relationshipToHousehold: ['', Validators.required]
+        relationshipToHouseholdHead: [null, Validators.required],
+        ethnicity: [null, Validators.required]
       }),
       socioEconomicAndEnvData: this.formBuilder.group({
-        ethnicity: ['', Validators.required],
-        socioEconomicStatus: ['', Validators.required],
-        typeOfWaterSource: ['', Validators.required],
-        typeOfToiletFacility: ['', Validators.required]
-      })
-    });    
+        socioEconomicStatus: [null, Validators.required],
+        typeOfWaterSource: [null, Validators.required],
+        typeOfToiletFacility: [null, Validators.required]
+      }),
+      householdMembers: this.formBuilder.array([
+        this.formBuilder.group({
+          lastname: ['', Validators.required],
+          firstname: ['', Validators.required],
+          middlename: ['', Validators.required],
+          gender: [null, Validators.required],
+          dateOfBirth: ['', Validators.required],
+          civilStatus: [null, Validators.required],
+          philHealthIDNumber: ['', Validators.required],
+          philHealthMembershipType: [null, Validators.required],
+          philHealthCategory: [null, Validators.required],
+          relationshipToHouseholdHead: [null, Validators.required],
+        })
+      ])
+    }); 
   }
 
 }

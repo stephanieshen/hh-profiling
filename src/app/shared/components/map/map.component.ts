@@ -53,7 +53,7 @@ export class MapComponent implements OnInit {
 
     this.dialogService.open(ProfilingComponent, {
       header: 'Profiling',
-      width: '90%',
+      width: '70%',
       height: '100%',
       closable: true,
       data: {

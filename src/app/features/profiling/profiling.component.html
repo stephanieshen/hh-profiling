@@ -13,7 +13,15 @@
                 <app-household-info-form [profilingForm]="profilingForm"></app-household-info-form>
             }
         
+            @if (activeIndex === 1) {
+                <app-socio-and-env-form [profilingForm]="profilingForm"></app-socio-and-env-form>
+            }
+
+            @if (activeIndex === 2) {
+                <app-household-members-form [profilingForm]="profilingForm"></app-household-members-form>
+            }
         </form>
     </div>
+
 </div>
 

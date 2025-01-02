@@ -1,1 +1,36 @@
-<p>socio-and-env-form works!</p>
+<div *ngIf="profilingForm" [formGroup]="profilingForm">
+    <h4>Step 2 out of 4: Socioeconomic Status & Environmental Health Data</h4>
+    <div formGroupName="socioEconomicAndEnvData">
+        <div>
+            <h5 class="mb-3">Socioeconomic Status</h5>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <p-select inputId="socioEconomicStatus" [options]="socioEconomicStatusOptions" optionLabel="title" class="w-full" formControlName="socioEconomicStatus" />
+                        <label for="socioEconomicStatus">Socio Economic Status</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h5 class="mb-3">Environmental Health Data</h5>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <p-select inputId="typeOfWaterSource" [options]="typeOfWaterSourceOptions" optionLabel="title" class="w-full" formControlName="typeOfWaterSource" />
+                        <label for="typeOfWaterSource">Type of Water Source</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <p-select inputId="typeOfToiletFacility" [options]="typeOfToiletFacilityOptions" optionLabel="title" class="w-full" formControlName="typeOfToiletFacility" />
+                        <label for="typeOfToiletFacility">Type of Toilet Facility</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

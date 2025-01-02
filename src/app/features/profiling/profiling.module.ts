@@ -12,8 +12,10 @@ import { FloatLabel } from 'primeng/floatlabel';
 import { Fluid } from 'primeng/fluid';
 import { InputNumber } from 'primeng/inputnumber';
 import { DatePicker } from 'primeng/datepicker';
-import { Select } from 'primeng/select';
+import { SelectModule } from 'primeng/select';
 import { StepsModule } from 'primeng/steps';
+import { TabsModule } from 'primeng/tabs';
+import { DatePickerModule } from 'primeng/datepicker';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { StepsModule } from 'primeng/steps';
     CommonModule,
     StepsModule,
     InputTextModule,
-    Select,
+    SelectModule,
     InputNumber,
     DatePicker,
     FloatLabel,
     Fluid,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    TabsModule,
+    DatePickerModule
   ]
 })
 export class ProfilingModule { }
