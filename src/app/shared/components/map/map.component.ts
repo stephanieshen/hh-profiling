@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { HHPMarker } from '../../models/marker.model';
 import { MarkerService } from '../../../core/services/marker.service';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Map, MapMouseEvent, Marker } from 'maplibre-gl';
 import { ProfilingModule } from '../../../features/profiling/profiling.module';
 import { ProfilingComponent } from '../../../features/profiling/profiling.component';
@@ -21,6 +21,7 @@ import maplibregl from 'maplibre-gl';
 })
 export class MapComponent implements OnInit {
 
+  dialogRef!: DynamicDialogRef;
   map!: Map;
   hhpMarkers!: HHPMarker[];
 
@@ -51,14 +52,18 @@ export class MapComponent implements OnInit {
       return;
     }
 
-    this.dialogService.open(ProfilingComponent, {
+    this.dialogRef = this.dialogService.open(ProfilingComponent, {
       header: 'Profiling',
       width: '80%',
-      height: '100%',
       closable: true,
+      maximizable: true,
       data: {
         latitude: event.lngLat.lat,
-        longitude: event.lngLat.lng
+        longitude: event.lngLat.lng,
+        submitProfilingForm: () => {
+          this.dialogRef.close();
+          this.drawMarker(event.lngLat.lng, event.lngLat.lat);
+        }
       }
     });
   }
@@ -88,12 +93,16 @@ export class MapComponent implements OnInit {
 
   private drawMarkers(): void {
     this.hhpMarkers.forEach((marker: HHPMarker) => {
-      const customMarker = document.createElement('div');
-      customMarker.className = 'hhp-marker';
-     
-      new Marker({ element: customMarker })
-        .setLngLat([marker.longitude, marker.latitude])
-        .addTo(this.map);
+      this.drawMarker(marker.longitude, marker.latitude);
     });
+  }
+
+  private drawMarker(lng: number, lat: number): void {
+    const customMarker = document.createElement('div');
+    customMarker.className = 'hhp-marker';
+     
+    new Marker({ element: customMarker })
+      .setLngLat([lng, lat])
+      .addTo(this.map);
   }
 }

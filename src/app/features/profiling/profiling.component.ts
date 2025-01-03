@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { Subject, takeUntil } from 'rxjs';
-import { Dropdown } from '../../shared/models/dropdown.model';
 import { Ethnicity, RelationshipToHeadOfHousehold, SocioeconomicStatus, TypeOfWaterSource } from '../../core/enums/dropdown-options.enum';
+import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-profiling',
@@ -20,6 +20,7 @@ export class ProfilingComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   constructor(
+    private dialogConfig: DynamicDialogConfig,
     private formBuilder: FormBuilder
   ) { }
 
@@ -39,10 +40,6 @@ export class ProfilingComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  onActiveIndexChange(index: number): void {
-    this.activeIndex = index;
-  }
-
   get houseHoldInfoFormGroup(): FormGroup {
     return this.profilingForm.get('householdInfo') as FormGroup;
   }
@@ -57,6 +54,37 @@ export class ProfilingComponent implements OnInit, OnDestroy {
 
   get surveyDetailsFormGroup(): FormGroup {
     return this.profilingForm.get('surveyDetails') as FormGroup;
+  }
+
+  onActiveIndexChange(index: number): void {
+    this.activeIndex = index;
+  }
+
+  addHouseholdMemberHandler(): void {
+    const membersForm = this.profilingForm.get('householdMembers') as FormArray;
+    membersForm.push(this.householdMembersFormControls);
+  }
+
+  removeHouseholdMemberHandler(index: number): void {
+    if (this.householdMembersFormArray.length === 1) {
+      return;
+    }
+
+    const membersForm = this.profilingForm.get('householdMembers') as FormArray;
+    membersForm.removeAt(index);
+  }
+
+  back(): void {
+    this.activeIndex = this.activeIndex - 1;
+  }
+
+  next(): void {
+    this.activeIndex = this.activeIndex + 1;
+  }
+
+  submitProfilingForm(): void {
+    console.log(this.profilingForm.value);
+    this.dialogConfig.data.submitProfilingForm();
   }
 
   private initForm(): void {
@@ -169,19 +197,23 @@ export class ProfilingComponent implements OnInit, OnDestroy {
 
   private get householdMembersForm(): FormArray {
     return this.formBuilder.array([
-      this.formBuilder.group({
-        lastname: ['', Validators.required],
-        firstname: ['', Validators.required],
-        middlename: ['', Validators.required],
-        gender: [null, Validators.required],
-        dateOfBirth: ['', Validators.required],
-        civilStatus: [null, Validators.required],
-        philHealthIDNumber: ['', Validators.required],
-        philHealthMembershipType: [null, Validators.required],
-        philHealthCategory: [null, Validators.required],
-        relationshipToHouseholdHead: [null, Validators.required],
-      })
+      this.householdMembersFormControls
     ]);
+  }
+
+  private get householdMembersFormControls(): FormGroup {
+    return this.formBuilder.group({
+      lastname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      middlename: ['', Validators.required],
+      gender: [null, Validators.required],
+      dateOfBirth: ['', Validators.required],
+      civilStatus: [null, Validators.required],
+      philHealthIDNumber: ['', Validators.required],
+      philHealthMembershipType: [null, Validators.required],
+      philHealthCategory: [null, Validators.required],
+      relationshipToHouseholdHead: [null, Validators.required],
+    });
   }
 
   private get surveyDetailsForm(): FormGroup {

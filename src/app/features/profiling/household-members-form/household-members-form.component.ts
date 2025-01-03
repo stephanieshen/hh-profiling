@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { CIVIL_STATUS, GENDER, MEMBER_TYPE, PHILHEALTH_CATEGORY, RELATIONSHIP_TO_HEAD_OF_HOUSEHOLD } from '../../../core/constants/dropdown-options.constants';
 
@@ -12,6 +12,8 @@ import { CIVIL_STATUS, GENDER, MEMBER_TYPE, PHILHEALTH_CATEGORY, RELATIONSHIP_TO
 export class HouseholdMembersFormComponent {
 
   @Input() profilingForm!: FormGroup;
+  @Output() addedMemberEvent: EventEmitter<void> = new EventEmitter<void>();
+  @Output() removedMemberEvent: EventEmitter<number> = new EventEmitter<number>();
 
   civilStatusOptions = CIVIL_STATUS;
   genderOptions = GENDER;
@@ -25,9 +27,12 @@ export class HouseholdMembersFormComponent {
   }
 
   addHouseholdMember(): void {
-    // this.householdMembersForm.push(this.createHouseholdMember());
-    // this.selectedTabIndex = this.householdMembersForm.length - 1;
+    this.addedMemberEvent.emit();
+    this.selectedTabIndex = this.householdMembersForm.length - 1;
   }
 
-  
+  removeHouseholdMember(index: number): void {
+    this.removedMemberEvent.emit(index);
+    this.selectedTabIndex = this.householdMembersForm.length - 1;
+  }
 }

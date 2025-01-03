@@ -4,8 +4,24 @@
         <p-tabs [value]="selectedTabIndex">
             <p-tablist>
                 @for (member of householdMembersForm.controls; track member; let index = $index) {
-                    <p-tab [value]="index">Member {{ index + 1 }}</p-tab>
+                    <p-tab [value]="index">
+                        Member {{ index + 1 }}
+
+                        @if (householdMembersForm.length > 1) {
+                            <p-button class="ml-2" icon="pi pi-trash" [rounded]="true" [outlined]="true" size="small" (click)="removeHouseholdMember(index)" />
+                        }
+                    </p-tab>
                 }
+                
+                <p-button 
+                    class="absolute right-0 top-50"
+                    [style]="{'transform': 'translateY(-50%)'}"
+                    icon="pi pi-plus-circle" 
+                    size="small" 
+                    label="Add member" 
+                    aria-label="Save"
+                    (click)="addHouseholdMember()"
+                />
             </p-tablist>
             <p-tabpanels class="px-0 mt-4">
                 @for (member of householdMembersForm.controls; track member; let index = $index) {
