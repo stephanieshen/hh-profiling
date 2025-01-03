@@ -1,1 +1,97 @@
-<p>survey-details-form works!</p>
+<div *ngIf="surveyDetailsForm">
+    <h4>Step 4 out of 4: Survey Details</h4>
+    <div [formGroup]="surveyDetailsForm">
+        <div>
+            <h5 class="mb-3">Date of Visit</h5>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <p-datepicker inputId="firstQuarterDateOfVisit" showIcon iconDisplay="input" class="w-full" formControlName="firstQuarterDateOfVisit" />
+                        <label for="firstQuarterDateOfVisit">1st Quarter</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <p-datepicker inputId="secondQuarterDateOfVisit" showIcon iconDisplay="input" class="w-full" formControlName="secondQuarterDateOfVisit" />
+                        <label for="secondQuarterDateOfVisit">2nd Quarter</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <p-datepicker inputId="thirdQuarterDateOfVisit" showIcon iconDisplay="input" class="w-full" formControlName="thirdQuarterDateOfVisit" />
+                        <label for="thirdQuarterDateOfVisit">3rd Quarter</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <p-datepicker inputId="fourthQuarterDateOfVisit" showIcon iconDisplay="input" class="w-full" formControlName="fourthQuarterDateOfVisit" />
+                        <label for="fourthQuarterDateOfVisit">4th Quarter</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h5 class="mb-3">Interviewed by</h5>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="interviewerFirstName" class="w-full" formControlName="interviewerFirstName" />
+                        <label for="interviewerFirstName">Firstname</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="interviewerMiddleName" class="w-full" formControlName="interviewerMiddleName" />
+                        <label for="interviewerMiddleName">Middlename</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="interviewerLastName" class="w-full" formControlName="interviewerLastName" />
+                        <label for="interviewerLastName">Lastname</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h5 class="mb-3">Reviewed by</h5>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="reviewerFirstName" class="w-full" formControlName="reviewerFirstName" />
+                        <label for="reviewerFirstName">Firstname</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="reviewerMiddleName" class="w-full" formControlName="reviewerMiddleName" />
+                        <label for="reviewerMiddleName">Middlename</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="reviewerLastName" class="w-full" formControlName="reviewerLastName" />
+                        <label for="reviewerLastName">Lastname</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

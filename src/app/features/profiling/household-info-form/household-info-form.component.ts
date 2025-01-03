@@ -11,8 +11,16 @@ import { ETHNICITY, RELATIONSHIP_TO_HEAD_OF_HOUSEHOLD } from '../../../core/cons
 })
 export class HouseholdInfoFormComponent {
 
-  @Input() profilingForm!: FormGroup;
+  @Input() householdInfoForm!: FormGroup;
 
   ethnicityOptions = ETHNICITY;
   releationshipToHouseholdHeadOptions = RELATIONSHIP_TO_HEAD_OF_HOUSEHOLD;
+
+  get isRelationshipToHouseholdHeadOthers(): boolean {
+    return !!this.householdInfoForm?.get('relationshipToHouseholdHeadOthers');
+  }
+
+  get hasTribeField(): boolean {
+    return !!this.householdInfoForm?.get('tribe');
+  }
 }

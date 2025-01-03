@@ -23,4 +23,11 @@ export class HouseholdMembersFormComponent {
   get householdMembersForm(): FormArray {
     return this.profilingForm.get('householdMembers') as FormArray;
   }
+
+  addHouseholdMember(): void {
+    // this.householdMembersForm.push(this.createHouseholdMember());
+    // this.selectedTabIndex = this.householdMembersForm.length - 1;
+  }
+
+  
 }

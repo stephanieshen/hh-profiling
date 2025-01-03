@@ -11,9 +11,17 @@ import { SOCIOECONOMIC_STATUS, TYPE_OF_TOILET_FACILITY, TYPE_OF_WATER_SOURCE } f
 })
 export class SocioAndEnvFormComponent {
 
-  @Input() profilingForm!: FormGroup;
+  @Input() socioEnvForm!: FormGroup;
 
   socioEconomicStatusOptions = SOCIOECONOMIC_STATUS;
   typeOfToiletFacilityOptions = TYPE_OF_TOILET_FACILITY;
   typeOfWaterSourceOptions = TYPE_OF_WATER_SOURCE;
+
+  get hasNHTSNumberField(): boolean {
+    return !!this.socioEnvForm?.get('nhtsNumber');
+  } 
+
+  get hasOtherTypeOfWaterSourceField(): boolean {
+    return !!this.socioEnvForm?.get('otherTypeOfWaterSource');
+  } 
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-survey-details-form',
@@ -9,4 +10,5 @@ import { Component } from '@angular/core';
 })
 export class SurveyDetailsFormComponent {
 
+  @Input() surveyDetailsForm!: FormGroup;
 }

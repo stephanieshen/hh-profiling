@@ -1,13 +1,21 @@
-<div *ngIf="profilingForm" [formGroup]="profilingForm">
+<div *ngIf="socioEnvForm">
     <h4>Step 2 out of 4: Socioeconomic Status & Environmental Health Data</h4>
-    <div formGroupName="socioEconomicAndEnvData">
+    <div [formGroup]="socioEnvForm">
         <div>
             <h5 class="mb-3">Socioeconomic Status</h5>
             <div class="formgrid grid">
                 <div class="field col">
                     <p-floatlabel variant="in">
-                        <p-select inputId="socioEconomicStatus" [options]="socioEconomicStatusOptions" optionLabel="title" class="w-full" formControlName="socioEconomicStatus" />
+                        <p-select inputId="socioEconomicStatus" [options]="socioEconomicStatusOptions" optionLabel="title" optionValue="id" class="w-full" formControlName="socioEconomicStatus" />
                         <label for="socioEconomicStatus">Socio Economic Status</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+            <div class="formgrid grid" *ngIf="hasNHTSNumberField">
+                <div class="field col">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="nhtsNumber" class="w-full" formControlName="nhtsNumber" />
+                        <label for="nhtsNumber">Please enter NHTS Number</label>
                     </p-floatlabel>
                 </div>
             </div>
@@ -17,8 +25,14 @@
             <div class="formgrid grid">
                 <div class="field col">
                     <p-floatlabel variant="in">
-                        <p-select inputId="typeOfWaterSource" [options]="typeOfWaterSourceOptions" optionLabel="title" class="w-full" formControlName="typeOfWaterSource" />
+                        <p-select inputId="typeOfWaterSource" [options]="typeOfWaterSourceOptions" optionLabel="title" optionValue="id" class="w-full" formControlName="typeOfWaterSource" />
                         <label for="typeOfWaterSource">Type of Water Source</label>
+                    </p-floatlabel>
+                </div>
+                <div class="field col" *ngIf="hasOtherTypeOfWaterSourceField">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="otherTypeOfWaterSource" class="w-full" formControlName="otherTypeOfWaterSource" />
+                        <label for="otherTypeOfWaterSource">Please specify type of water source</label>
                     </p-floatlabel>
                 </div>
             </div>

@@ -1,6 +1,6 @@
-<div *ngIf="profilingForm" [formGroup]="profilingForm">
+<div *ngIf="householdInfoForm">
     <h4>Step 1 out of 4: Household Information</h4>
-    <div formGroupName="householdInfo">
+    <div [formGroup]="householdInfoForm">
         <div>
             <h5 class="mb-3">Address</h5>
             <div class="formgrid grid">
@@ -70,8 +70,15 @@
             <div class="formgrid grid">
                 <div class="field col">
                     <p-floatlabel variant="in">
-                        <p-select inputId="relationshipToHouseholdHead" [options]="releationshipToHouseholdHeadOptions" optionLabel="title" class="w-full" formControlName="relationshipToHouseholdHead" />
+                        <p-select inputId="relationshipToHouseholdHead" [options]="releationshipToHouseholdHeadOptions" 
+                            optionLabel="title" optionValue="id" class="w-full" formControlName="relationshipToHouseholdHead" />
                         <label for="relationshipToHouseholdHead">Relationship to Household Head</label>
+                    </p-floatlabel>
+                </div>
+                <div class="field col" *ngIf="isRelationshipToHouseholdHeadOthers">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="relationshipToHouseholdHeadOthers" class="w-full" formControlName="relationshipToHouseholdHeadOthers" />
+                        <label for="relationshipToHouseholdHeadOthers">Please specify relationship to household head</label>
                     </p-floatlabel>
                 </div>
             </div>
@@ -82,8 +89,14 @@
             <div class="formgrid grid">
                 <div class="field col">
                     <p-floatlabel variant="in">
-                        <p-select inputId="ethnicity" [options]="ethnicityOptions" optionLabel="title" class="w-full" formControlName="ethnicity" />
+                        <p-select inputId="ethnicity" [options]="ethnicityOptions" optionLabel="title" optionValue="id" class="w-full" formControlName="ethnicity" />
                         <label for="ethnicity">Ethnicity</label>
+                    </p-floatlabel>
+                </div>
+                <div class="field col" *ngIf="hasTribeField">
+                    <p-floatlabel variant="in">
+                        <input pInputText type="text" id="tribe" class="w-full" formControlName="tribe" />
+                        <label for="tribe">Please indicate Tribe</label>
                     </p-floatlabel>
                 </div>
             </div>

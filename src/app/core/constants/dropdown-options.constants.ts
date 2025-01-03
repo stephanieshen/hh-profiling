@@ -1,66 +1,66 @@
 import { Dropdown } from "../../shared/models/dropdown.model";
+import { CivilStatus, Ethnicity, Gender, MemberType, PhilhealthCategory, RelationshipToHeadOfHousehold, SocioeconomicStatus, TypeOfToiletFacility, TypeOfWaterSource } from "../enums/dropdown-options.enum";
 
 export const ETHNICITY: Dropdown[] = [
-    { id: 1, title: 'IP Household', value: 'IP Household' },
-    { id: 2, title: 'Non-IP Household', value: 'Non-IP Household' }
+    { id: Ethnicity.IP_HOUSEHOLD, title: 'IP Household' },
+    { id: Ethnicity.NON_IP_HOUSEHOLD, title: 'Non-IP Household' }
 ];
-
+  
 export const SOCIOECONOMIC_STATUS: Dropdown[] = [
-    { id: 1, title: 'NHTS 4Ps', value: 'NHTS 4Ps' },
-    { id: 2, title: 'NHTS Non-4Ps', value: 'NHTS Non-4Ps' },
-    { id: 3, title: 'Non-NHTS', value: 'Non-NHTS' }
+    { id: SocioeconomicStatus.NHTS_4PS, title: 'NHTS 4Ps' },
+    { id: SocioeconomicStatus.NHTS_NON_4PS, title: 'NHTS Non-4Ps' },
+    { id: SocioeconomicStatus.NON_NHTS, title: 'Non-NHTS' }
 ];
-
+  
 export const TYPE_OF_WATER_SOURCE: Dropdown[] = [
-    { id: 1, title: 'Level I - Point Source', value: 'Level I - Point Source' },
-    { id: 2, title: 'Level II - Communal Faucet', value: 'Level II - Communal Faucet' },
-    { id: 3, title: 'Level III - Individual Connection', value: 'Level III - Individual Connection' },
-    { id: 4, title: 'Others', value: 'Others' }
+    { id: TypeOfWaterSource.LEVEL_I, title: 'Level I - Point Source' },
+    { id: TypeOfWaterSource.LEVEL_II, title: 'Level II - Communal Faucet' },
+    { id: TypeOfWaterSource.LEVEL_III, title: 'Level III - Individual Connection' },
+    { id: TypeOfWaterSource.OTHERS, title: 'Others' }
 ];
-
+  
 export const TYPE_OF_TOILET_FACILITY: Dropdown[] = [
-    { id: 1, title: 'A - Pour/Flush type connected to septic tank', value: 'A' },
-    { id: 2, title: 'B - Pour/Flush toilet connected to septic tank AND sewerage system', value: 'B' },
-    { id: 3, title: 'C - Ventilated Pit (VIP) latrine', value: 'C' },
-    { id: 4, title: 'D - Water-sealed toilet', value: 'D' },
-    { id: 5, title: 'E - Overhung latrine', value: 'E' },
-    { id: 6, title: 'F - Open pit latrine', value: 'F' },
-    { id: 7, title: 'G - Without toilet', value: 'G' }
+    { id: TypeOfToiletFacility.A, title: 'A - Pour/Flush type connected to septic tank' },
+    { id: TypeOfToiletFacility.B, title: 'B - Pour/Flush toilet connected to septic tank AND sewerage system' },
+    { id: TypeOfToiletFacility.C, title: 'C - Ventilated Pit (VIP) latrine' },
+    { id: TypeOfToiletFacility.D, title: 'D - Water-sealed toilet' },
+    { id: TypeOfToiletFacility.E, title: 'E - Overhung latrine' },
+    { id: TypeOfToiletFacility.F, title: 'F - Open pit latrine' },
+    { id: TypeOfToiletFacility.G, title: 'G - Without toilet' }
 ];
-
+  
 export const RELATIONSHIP_TO_HEAD_OF_HOUSEHOLD: Dropdown[] = [
-    { id: 1, title: '1 - Head', value: '1' },
-    { id: 2, title: '2 - Spouse', value: '2' },
-    { id: 3, title: '3 - Son', value: '3' },
-    { id: 4, title: '4 - Daughter', value: '4' },
-    { id: 5, title: '5 - Others', value: '5' }
+    { id: RelationshipToHeadOfHousehold.HEAD, title: '1 - Head' },
+    { id: RelationshipToHeadOfHousehold.SPOUSE, title: '2 - Spouse' },
+    { id: RelationshipToHeadOfHousehold.SON, title: '3 - Son' },
+    { id: RelationshipToHeadOfHousehold.DAUGHTER, title: '4 - Daughter' },
+    { id: RelationshipToHeadOfHousehold.OTHERS, title: '5 - Others' }
 ];
-
+  
 export const GENDER: Dropdown[] = [
-    { id: 1, title: 'Male', value: 'Male' },
-    { id: 2, title: 'Female', value: 'Female' }
+    { id: Gender.MALE, title: 'Male' },
+    { id: Gender.FEMALE, title: 'Female' }
 ];
-
+  
 export const CIVIL_STATUS: Dropdown[] = [
-    { id: 1, title: 'S - Single', value: 'S' },
-    { id: 2, title: 'M - Married', value: 'M' },
-    { id: 3, title: 'W - Widow/er', value: 'W' },
-    { id: 4, title: 'SP - Separated', value: 'SP' },
-    { id: 5, title: 'C - Cohabilitation', value: 'C' }
+    { id: CivilStatus.SINGLE, title: 'S - Single' },
+    { id: CivilStatus.MARRIED, title: 'M - Married' },
+    { id: CivilStatus.WIDOW, title: 'W - Widow/er' },
+    { id: CivilStatus.SEPARATED, title: 'SP - Separated' },
+    { id: CivilStatus.COHABITATION, title: 'C - Cohabilitation' }
 ];
-
+  
 export const MEMBER_TYPE: Dropdown[] = [
-    { id: 1, title: 'M - Member', value: 'M' },
-    { id: 2, title: 'D - Dependent', value: 'D' }
+    { id: MemberType.MEMBER, title: 'M - Member' },
+    { id: MemberType.DEPENDENT, title: 'D - Dependent' }
 ];
-
+  
 export const PHILHEALTH_CATEGORY: Dropdown[] = [
-    { id: 1, title: 'FEP - Formal Economy Private', value: 'FEP' },
-    { id: 2, title: 'FEG - Formal Economy Government', value: 'FEG' },
-    { id: 3, title: 'IE - Informal Economy', value: 'IE' },
-    { id: 4, title: 'N - NHTS', value: 'N' },
-    { id: 5, title: 'SC - Senior Citizen', value: 'SC' },
-    { id: 6, title: 'IP - Indigenous People', value: 'IP' },
-    { id: 7, title: 'U - Unknown', value: 'U' }
+    { id: PhilhealthCategory.FEP, title: 'FEP - Formal Economy Private' },
+    { id: PhilhealthCategory.FEG, title: 'FEG - Formal Economy Government' },
+    { id: PhilhealthCategory.IE, title: 'IE - Informal Economy' },
+    { id: PhilhealthCategory.NHTS, title: 'N - NHTS' },
+    { id: PhilhealthCategory.SC, title: 'SC - Senior Citizen' },
+    { id: PhilhealthCategory.IP, title: 'IP - Indigenous People' },
+    { id: PhilhealthCategory.UNKNOWN, title: 'U - Unknown' }
 ];
-
