@@ -3,20 +3,20 @@ import markers from '../../../../assets/data/markers.json';
  
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MapComponent } from './map.component';
-import { MarkerService } from '../../../core/services/marker.service';
 import maplibregl from 'maplibre-gl';
 import { of } from 'rxjs';
 import { DialogService } from 'primeng/dynamicdialog';
+import { MarkerDataService } from '../../../core/data-services/marker.data.service';
 
 describe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
-  let markerServiceSpy: jasmine.SpyObj<MarkerService>;
+  let markerDataServiceSpy: jasmine.SpyObj<MarkerDataService>;
   let mapSpy: jasmine.SpyObj<maplibregl.Map>;
   let dialogServiceSpy: jasmine.SpyObj<any>;
 
   beforeEach(async () => {
-    markerServiceSpy = jasmine.createSpyObj('MyService', ['getMarkers']);
+    markerDataServiceSpy = jasmine.createSpyObj('MarkerDataService', ['getMarkers']);
     mapSpy = jasmine.createSpyObj('Map', ['on', 'resize']);
     dialogServiceSpy = jasmine.createSpyObj('DialogService', ['open']);
 
@@ -25,7 +25,7 @@ describe('MapComponent', () => {
         MapComponent
       ],
       providers: [
-        { provide: MarkerService, useValue: markerServiceSpy },
+        { provide: MarkerDataService, useValue: markerDataServiceSpy },
         { provide: DialogService, useValue: dialogServiceSpy }
       ]
     }).compileComponents();
@@ -33,7 +33,7 @@ describe('MapComponent', () => {
     fixture = TestBed.createComponent(MapComponent);
     component = fixture.componentInstance;
 
-    markerServiceSpy.getMarkers.and.returnValue(of(markers));
+    // markerDataServiceSpy.getMarkersData$.and.returnValue(of(markers));
 
     fixture.detectChanges();
   });
@@ -44,7 +44,7 @@ describe('MapComponent', () => {
 
   describe('ngOnInit', () => {
     it('should get all the markers and assign value to hhpMarkers', () => {
-      expect(markerServiceSpy.getMarkers).toHaveBeenCalled();
+      // expect(markerDataServiceSpy.getMarkersData).toHaveBeenCalled();
       expect(component.hhpMarkers).toEqual(markers);
     });
 

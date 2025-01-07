@@ -1,109 +1,91 @@
 [
     {
         "id": 1,
-        "title": "Marker 1",
         "latitude": 16.439037040992773,
         "longitude": 120.33535825033437
     },
     {
         "id": 2,
-        "title": "Marker 2",
         "latitude": 16.438573978915812,
         "longitude": 120.33489691038318
     },
     {
         "id": 3,
-        "title": "Marker 3",
         "latitude": 16.43815207695144,
         "longitude": 120.3354413988132
     },
     {
         "id": 4,
-        "title": "Marker 4",
         "latitude": 16.438492175592543,
         "longitude": 120.33505106041771
     },
     {
         "id": 5,
-        "title": "Marker 5",
         "latitude": 16.437934716014687,
         "longitude": 120.33563106790745
     },
     {
         "id": 6,
-        "title": "Marker 6",
         "latitude": 16.43872424935215,
         "longitude": 120.33583193711548
     },
     {
         "id": 7,
-        "title": "Marker 7",
         "latitude": 16.437964318288684,
         "longitude": 120.33463127250278
     },
     {
         "id": 8,
-        "title": "Marker 8",
         "latitude": 16.43829690824394,
         "longitude": 120.33500630487427
     },
     {
         "id": 9,
-        "title": "Marker 9",
         "latitude": 16.438159725312015,
         "longitude": 120.33576224153727
     },
     {
         "id": 10,
-        "title": "Marker 10",
         "latitude": 16.43851765217445,
         "longitude": 120.33601512993206
     },
     {
         "id": 11,
-        "title": "Marker 11",
         "latitude": 16.43773699293807,
         "longitude": 120.33454709983972
     },
     {
         "id": 12,
-        "title": "Marker 12",
         "latitude": 16.4383038833804,
         "longitude": 120.33543822714694
     },
     {
         "id": 13,
-        "title": "Marker 13",
         "latitude": 16.4378935222966,
         "longitude": 120.33520356042487
     },
     {
         "id": 14,
-        "title": "Marker 14",
         "latitude": 16.43867318429356,
         "longitude": 120.33511183056914
     },
     {
         "id": 15,
-        "title": "Marker 15",
         "latitude": 16.43890233583547,
         "longitude": 120.33492108902242
     },
     {
         "id": 16,
-        "title": "Marker 16",
         "latitude": 16.438045087162566,
         "longitude": 120.33531796569128
     },
     {
         "id": 17,
-        "title": "Marker 17",
         "latitude": 16.437614514027876,
         "longitude": 120.33551767563999
     },
     {
         "id": 18,
-        "title": "Marker 18",
         "latitude": 16.438813456102014,
         "longitude": 120.33562384672618
     }

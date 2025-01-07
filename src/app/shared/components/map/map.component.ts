@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { HHPMarker } from '../../models/marker.model';
-import { MarkerService } from '../../../core/services/marker.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Map, MapMouseEvent, Marker } from 'maplibre-gl';
 import { ProfilingModule } from '../../../features/profiling/profiling.module';
 import { ProfilingComponent } from '../../../features/profiling/profiling.component';
 import maplibregl from 'maplibre-gl';
+import { MarkerDataService } from '../../../core/data-services/marker.data.service';
+import { MarkerService } from '../../../core/services/marker.service';
 
 @Component({
   selector: 'app-map',
@@ -30,10 +31,10 @@ export class MapComponent implements OnInit {
   constructor(
     public dialogService: DialogService,
     private markerService: MarkerService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.markerService.getMarkers()
+    this.markerService.getMarkersData()
       .pipe(takeUntil(this.destroyed$))
       .subscribe((markers: HHPMarker[]) => {
         this.hhpMarkers = markers;
@@ -62,10 +63,18 @@ export class MapComponent implements OnInit {
         longitude: event.lngLat.lng,
         submitProfilingForm: () => {
           this.dialogRef.close();
-          this.drawMarker(event.lngLat.lng, event.lngLat.lat);
+          this.saveMarker({
+            id: Math.random(),
+            longitude: event.lngLat.lng,
+            latitude: event.lngLat.lat
+          });
         }
       }
     });
+  }
+
+  saveMarker(marker: HHPMarker): void {
+    this.drawMarker(marker.longitude, marker.latitude);
   }
 
   private isMarker(event: MapMouseEvent): boolean {

@@ -1,8 +1,6 @@
-// @ts-ignore
-import markers from '../../../assets/data/markers.json';
-
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { MarkerDataService } from '../data-services/marker.data.service';
+import { Observable } from 'rxjs';
 import { HHPMarker } from '../../shared/models/marker.model';
 
 @Injectable({
@@ -10,9 +8,11 @@ import { HHPMarker } from '../../shared/models/marker.model';
 })
 export class MarkerService {
 
-  constructor() { }
+  constructor(
+    private markerDataService: MarkerDataService
+  ) { }
 
-  getMarkers(): Observable<HHPMarker[]> {
-    return of(markers);
+  getMarkersData(): Observable<HHPMarker[]> {
+    return this.markerDataService.fetchMarkers$();
   }
 }

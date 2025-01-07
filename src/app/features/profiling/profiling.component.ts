@@ -83,7 +83,6 @@ export class ProfilingComponent implements OnInit, OnDestroy {
   }
 
   submitProfilingForm(): void {
-    console.log(this.profilingForm.value);
     this.dialogConfig.data.submitProfilingForm();
   }
 
