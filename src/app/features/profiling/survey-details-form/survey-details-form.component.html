@@ -1,12 +1,12 @@
 <div *ngIf="surveyDetailsForm">
-    <h4>Step 4 out of 4: Survey Details</h4>
+    <h4>Step 4 out of 4: <span data-test-id="tab-title">Survey Details</span></h4>
     <div [formGroup]="surveyDetailsForm">
         <div>
             <h5 class="mb-3">Date of Visit</h5>
             <div class="formgrid grid">
                 <div class="field col">
                     <p-floatlabel variant="in">
-                        <p-datepicker inputId="firstQuarterDateOfVisit" showIcon iconDisplay="input" class="w-full" formControlName="firstQuarterDateOfVisit" />
+                        <p-datepicker inputId="firstQuarterDateOfVisit" showIcon iconDisplay="input" formControlName="firstQuarterDateOfVisit" />
                         <label for="firstQuarterDateOfVisit">1st Quarter</label>
                     </p-floatlabel>
                 </div>
@@ -14,7 +14,7 @@
             <div class="formgrid grid">
                 <div class="field col">
                     <p-floatlabel variant="in">
-                        <p-datepicker inputId="secondQuarterDateOfVisit" showIcon iconDisplay="input" class="w-full" formControlName="secondQuarterDateOfVisit" />
+                        <p-datepicker inputId="secondQuarterDateOfVisit" showIcon iconDisplay="input" formControlName="secondQuarterDateOfVisit" />
                         <label for="secondQuarterDateOfVisit">2nd Quarter</label>
                     </p-floatlabel>
                 </div>
@@ -22,7 +22,7 @@
             <div class="formgrid grid">
                 <div class="field col">
                     <p-floatlabel variant="in">
-                        <p-datepicker inputId="thirdQuarterDateOfVisit" showIcon iconDisplay="input" class="w-full" formControlName="thirdQuarterDateOfVisit" />
+                        <p-datepicker inputId="thirdQuarterDateOfVisit" showIcon iconDisplay="input" formControlName="thirdQuarterDateOfVisit" />
                         <label for="thirdQuarterDateOfVisit">3rd Quarter</label>
                     </p-floatlabel>
                 </div>
@@ -30,7 +30,7 @@
             <div class="formgrid grid">
                 <div class="field col">
                     <p-floatlabel variant="in">
-                        <p-datepicker inputId="fourthQuarterDateOfVisit" showIcon iconDisplay="input" class="w-full" formControlName="fourthQuarterDateOfVisit" />
+                        <p-datepicker inputId="fourthQuarterDateOfVisit" showIcon iconDisplay="input" formControlName="fourthQuarterDateOfVisit" />
                         <label for="fourthQuarterDateOfVisit">4th Quarter</label>
                     </p-floatlabel>
                 </div>

@@ -66,11 +66,12 @@ export class ProfilingComponent implements OnInit, OnDestroy {
   }
 
   removeHouseholdMemberHandler(index: number): void {
-    if (this.householdMembersFormArray.length === 1) {
+    const membersForm = this.profilingForm.get('householdMembers') as FormArray;
+
+    if (membersForm.length === 1) {
       return;
     }
 
-    const membersForm = this.profilingForm.get('householdMembers') as FormArray;
     membersForm.removeAt(index);
   }
 

@@ -6,17 +6,17 @@ import { MapComponent } from './map.component';
 import maplibregl from 'maplibre-gl';
 import { of } from 'rxjs';
 import { DialogService } from 'primeng/dynamicdialog';
-import { MarkerDataService } from '../../../core/data-services/marker.data.service';
+import { MarkerService } from '../../../core/services/marker.service';
 
 describe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
-  let markerDataServiceSpy: jasmine.SpyObj<MarkerDataService>;
+  let markerServiceSpy: jasmine.SpyObj<MarkerService>;
   let mapSpy: jasmine.SpyObj<maplibregl.Map>;
   let dialogServiceSpy: jasmine.SpyObj<any>;
 
   beforeEach(async () => {
-    markerDataServiceSpy = jasmine.createSpyObj('MarkerDataService', ['getMarkers']);
+    markerServiceSpy = jasmine.createSpyObj('MarkerService', ['getMarkersData']);
     mapSpy = jasmine.createSpyObj('Map', ['on', 'resize']);
     dialogServiceSpy = jasmine.createSpyObj('DialogService', ['open']);
 
@@ -25,7 +25,7 @@ describe('MapComponent', () => {
         MapComponent
       ],
       providers: [
-        { provide: MarkerDataService, useValue: markerDataServiceSpy },
+        { provide: MarkerService, useValue: markerServiceSpy },
         { provide: DialogService, useValue: dialogServiceSpy }
       ]
     }).compileComponents();
@@ -33,7 +33,7 @@ describe('MapComponent', () => {
     fixture = TestBed.createComponent(MapComponent);
     component = fixture.componentInstance;
 
-    // markerDataServiceSpy.getMarkersData$.and.returnValue(of(markers));
+    markerServiceSpy.getMarkersData.and.returnValue(of(markers));
 
     fixture.detectChanges();
   });
@@ -44,7 +44,7 @@ describe('MapComponent', () => {
 
   describe('ngOnInit', () => {
     it('should get all the markers and assign value to hhpMarkers', () => {
-      // expect(markerDataServiceSpy.getMarkersData).toHaveBeenCalled();
+      expect(markerServiceSpy.getMarkersData).toHaveBeenCalled();
       expect(component.hhpMarkers).toEqual(markers);
     });
 

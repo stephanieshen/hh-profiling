@@ -7,7 +7,6 @@ import { Map, MapMouseEvent, Marker } from 'maplibre-gl';
 import { ProfilingModule } from '../../../features/profiling/profiling.module';
 import { ProfilingComponent } from '../../../features/profiling/profiling.component';
 import maplibregl from 'maplibre-gl';
-import { MarkerDataService } from '../../../core/data-services/marker.data.service';
 import { MarkerService } from '../../../core/services/marker.service';
 
 @Component({
