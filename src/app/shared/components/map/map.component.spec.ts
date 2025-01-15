@@ -3,10 +3,12 @@ import markers from '../../../../assets/data/markers.json';
  
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MapComponent } from './map.component';
-import maplibregl from 'maplibre-gl';
+import maplibregl, { LngLat, MapMouseEvent, Marker } from 'maplibre-gl';
 import { of } from 'rxjs';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MarkerService } from '../../../core/services/marker.service';
+import { By } from '@angular/platform-browser';
+import { ProfilingComponent } from '../../../features/profiling/profiling.component';
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -14,9 +16,11 @@ describe('MapComponent', () => {
   let markerServiceSpy: jasmine.SpyObj<MarkerService>;
   let mapSpy: jasmine.SpyObj<maplibregl.Map>;
   let dialogServiceSpy: jasmine.SpyObj<any>;
+  let markerSpy: jasmine.SpyObj<Marker>;
 
   beforeEach(async () => {
     markerServiceSpy = jasmine.createSpyObj('MarkerService', ['getMarkersData']);
+    markerSpy = jasmine.createSpyObj('Marker', ['setLngLat', 'addTo']);
     mapSpy = jasmine.createSpyObj('Map', ['on', 'resize']);
     dialogServiceSpy = jasmine.createSpyObj('DialogService', ['open']);
 
@@ -141,4 +145,86 @@ describe('MapComponent', () => {
     });
   });
   
+  describe('saveMarker', () => {
+    it('should call drawMarker', () => {
+      const mockMarker = {
+        id: 1,
+        latitude: 16.43815207695144,
+        longitude: 120.3354413988132
+      }
+  
+      spyOn(component as any, 'drawMarker');
+  
+      component.saveMarker(mockMarker);
+  
+      expect((component as any).drawMarker).toHaveBeenCalledWith(mockMarker.longitude, mockMarker.latitude);
+    });
+  });
+
+  describe('drawMarkers', () => {
+    it('should loop through all the markers and call drawMarker', () => {
+      component.hhpMarkers = [
+        {
+          id: 1,
+          latitude: 16.43815207695144,
+          longitude: 120.3354413988132
+        },
+        {
+          id: 2,
+          latitude: 16.438492175592543,
+          longitude: 120.33505106041771
+        }
+      ];
+
+      spyOn(component as any, 'drawMarker');
+
+      (component as any).drawMarkers();
+
+      expect((component as any).drawMarker).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('drawMarker', () => {
+    it('should draw a marker to the map', () => {
+      const mockMarker = {
+        id: 1,
+        latitude: 16.43815207695144,
+        longitude: 120.3354413988132
+      };
+      
+      const customMarker = document.createElement('div');
+      customMarker.className = 'hhp-marker';
+
+      spyOn(document, 'createElement').and.returnValue(customMarker);
+      spyOn(Marker.prototype, 'setLngLat').and.returnValue(markerSpy);
+      spyOn(Marker.prototype, 'addTo').and.returnValue(markerSpy);
+
+      (component as any).drawMarker(mockMarker.longitude, mockMarker.latitude);
+
+      expect(document.createElement).toHaveBeenCalledTimes(1);
+      expect(Marker.prototype.setLngLat).toHaveBeenCalledWith([mockMarker.longitude, mockMarker.latitude]);
+    });
+  });
+
+  // describe('mapClick', () => {
+  //   it('should open profiling component', () => {
+  //     const mockMapMouseEvent = {
+  //       originalEvent: {
+  //         target: {
+  //           classList: {
+  //             contains: jasmine.createSpy().and.returnValue(false)
+  //           }
+  //         }
+  //       },
+  //       lngLat: {
+  //         lat: 16.43815207695144,
+  //         lng: 120.3354413988132
+  //       }
+  //     } as any;
+
+  //     component.mapClick(mockMapMouseEvent);
+
+  //     expect(dialogServiceSpy.open).toHaveBeenCalled();
+  //   });
+  // });
 });
